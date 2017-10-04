@@ -1,0 +1,279 @@
+
+body {
+	--main-width: 900px; /* also track width */
+	--track-height: 300px;
+	
+	--box-width: 80px;
+	--box-height: 100px;
+	
+	--jumper-width: 100px;
+	--jumper-height: 135px;
+	
+	cursor: default;
+	background-color: #4b4b4b;
+}
+
+div { backface-visibility: hidden; }
+
+div.main_bg {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 500px;
+	background-image: url('images/main_bg.png');
+	background-repeat: repeat;
+	margin: 0;
+}
+
+span.game_title {
+	position: relative;
+	display: block;
+	float: left;
+	width: 200px;
+	margin: 13px 0 0 0;
+	text-align: center;
+	color: #e1dd94;
+	font-size: 18px;
+	text-shadow: 2px 2px 10px black;
+}
+
+div.mainDiv {
+	position: relative;
+	float: left;
+	width: var(--main-width);
+	height: 360px;
+	margin: 30px 20px 100px 0; /* margin-left gets calculated by JS  */
+	background-color: transparent;
+	background-image: url('images/track_bg.png');
+	border-radius: 10px;
+	box-shadow: 2px 2px 20px black;
+}
+
+div.infoHolder {
+	width: inherit;
+	height: 50px;
+	margin: 0;
+	background-color: transparent;
+	background-image: url('images/bgpix.png');
+	background-repeat: repeat;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+div.trackHolder {
+	width: inherit;
+	height: var(--track-height);
+	margin: 0;
+	background-color: transparent;
+}
+
+div#trackDiv {
+	position: relative;
+	width: inherit;
+	height: inherit;
+	margin: 0;
+	background-color: transparent;
+}
+
+div.box_element {
+	position: absolute;
+	width: var(--box-width);
+	height: var(--box-height);
+	margin-top: calc( var(--track-height) - var(--box-height) );
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: calc( var(--main-width) /*- var(--box-width)*/ );
+	background-color: transparent;
+}
+
+div.jumper {
+	position: absolute;
+	width: var(--jumper-width);
+	height: var(--jumper-height);
+	margin-top: calc( var(--track-height) - 1.15*var(--jumper-height) );
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: calc( 10px + var(--jumper-width) );
+	background-color: transparent;
+	z-index: 1;
+	
+	background-image: url('images/walking_sprite_test.png');
+    background-position: 0px 0px;
+}
+
+div.JumperHead {
+	position: relative;
+	width: 60px;
+	height: 84px;
+	margin: -23px 0 0 30px;
+	background-color: transparent;
+	background-image: url('images/Milkicu.png');
+}
+
+div.JumperShadow {
+	position: absolute;
+	width: var(--jumper-width);
+	height: 15px;
+	margin-top: calc( var(--track-height) - 0.2*var(--jumper-height) );
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: calc( 10px + var(--jumper-width) );
+	background-color: transparent;
+	z-index: 0;
+	background-image: url('images/shadow.png');
+}
+
+div.shoutBubble {
+	position: relative;
+	width: 150px;
+	height: 90px;
+	margin: -170px 0 0 60px;
+	background-color: transparent;
+	background-image: url('images/shoutBubble.png');
+	padding: 6px 10px 18px 14px;
+	color: #edebce;
+}
+
+p#p_currLevel, p#p_currWeight {
+	position: relative;
+	display: block;
+	float: left;
+	width: 120px;
+	margin: 14px 0 0 0;
+	text-align: center;
+	color: #edebce;
+/*
+	text-shadow: 2px 2px 10px black;
+*/
+}
+
+button#btn_nextlevel {
+	position: relative;
+	float: left;
+	margin: 8px 0 0 0px;
+	color: #edebce;
+	background-color: transparent;
+	background-image: url('images/bgpix.png');
+	background-repeat: repeat;
+	transition: color 0.4s;
+}
+button#btn_help {
+	position: relative;
+	float: left;
+	margin: 8px 0 0 5px;
+	color: #edebce;
+	background-color: transparent;
+	background-image: url('images/bgpix.png');
+	background-repeat: repeat;
+	transition: color 0.4s;
+}
+button#btn_shout {
+	position: relative;
+	float: left;
+	margin: 8px 5px 0 5px;
+	color: #edebce;
+	background-color: transparent;
+	background-image: url('images/bgpix.png');
+	background-repeat: repeat;
+	transition: color 0.4s;
+}
+button#btn_sounds {
+	position: relative;
+	float: left;
+	margin: 8px 5px 0 30px;
+	color: #edebce;
+	background-color: transparent;
+	background-image: url('images/bgpix.png');
+	background-repeat: repeat;
+	transition: color 0.4s;
+}
+button#btn_sounds :nth-child(1) {
+	color: #34FF00;
+	font-weight: bold;
+	text-shadow: 0 0 2px white;
+}
+
+#btn_nextlevel:hover, #btn_help:hover, #btn_shout:hover, #btn_sounds:hover { 
+	color: #E494BD;
+}
+#btn_nextlevel:active, #btn_help:active, #btn_shout:active, #btn_sounds:active {
+	color: white;
+	text-shadow: 0px 0px 3px white;
+}
+
+#levelProgBar {
+	position: relative;
+	float: left;
+	width: var(--main-width);
+	height: 7px;
+	padding: 0;
+	margin: 0;
+}
+
+#levelProgBar .progress {
+	height: inherit;
+	background-color: transparent;
+}
+
+#levelProgBar .progress-bar {
+    height: inherit;
+    background-image: url('images/bgpix.png');
+    background-repeat: repeat;
+    background-color: transparent !important;
+    opacity: 0.6;
+}
+
+.modal-content {
+	color: white;
+	background-image: url('images/bgpix2.png');
+    background-repeat: repeat;
+    background-color: transparent;
+}
+.modal-content .modal-header, .modal-footer {
+	border: none;
+}
+
+.modal-content #btn_close {
+	color: white;
+	background-color: transparent;
+	background-image: url('images/bgpix.png');
+	background-repeat: repeat;
+	transition: color 0.4s;
+	outline: none;
+	border: none;
+}
+.modal-content #btn_close:hover  { color: #E494BD; }
+.modal-content #btn_close:active {
+	color: white;
+	text-shadow: 0px 0px 3px white;
+}
+
+div.win_cake {
+	position: relative;
+	width: var(--box-width);
+	height: var(--box-height);
+	margin: 0 auto 0 auto;
+	background-image: url('images/win_cake_sprite.png');
+	background-color: transparent;
+	background-position: 0px 0px;
+}
+.win_cake:hover {
+	background-position: 160px 0px;
+}
+
+.who_made_it {
+	position: relative;
+	width: var(--main-width);
+	height: 20px;
+	color: #1A1A1A;
+	text-align: center;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+	font-size: 14px;
+/*
+	text-shadow: 2px 2px 10px black;
+*/
+}
+

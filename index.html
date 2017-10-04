@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title> Milkiću trči </title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mainStyle.css" />
+    <script type="text/javascript" src="jquery-3.2.1.min.js" ></script>
+	<script type="text/javascript" src="jquery.pause.min.js" ></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <script type="text/javascript" src="Images.js" ></script>
+    <script type="text/javascript" src="Sounds.js" ></script>
+    <script type="text/javascript" src="BoxClass.js" ></script>
+    <script type="text/javascript" src="JumperClass.js" ></script>
+    <script type="text/javascript" src="ModalsClass.js" ></script>
+    <script type="text/javascript" src="Shouts.js" ></script>
+    <script type="text/javascript" src="mainScript.js" ></script>
+</head>
+
+<body>
+	
+	<div class="main_bg" >
+		<div class="container mainDiv" >
+			
+			<div class="row" >
+				<div class="col-*-* infoHolder">
+					<span class="game_title"> MILKIĆU TRČI ! </span>
+					<button class="btn" id="btn_nextlevel" > START </button>
+					<button class="btn" id="btn_help" > Šta da radim ? </button>
+					<button class="btn" id="btn_shout" > Pa kaže... </button>
+					<p id="p_currLevel" > Nivo = <b><span>0</span></b> </p>
+					<p id="p_currWeight" > Debelost = <b><span>0</span></b> kg</p>
+					<button class="btn" id="btn_sounds" > <b><span>☼</span></b> Sounds <span>on</span> </button>
+				</div>
+			</div>
+			
+			<div class="row" >
+				<div class="col-*-*">
+					<div class="container" id="levelProgBar" >
+						<div class="progress" style="border-radius:0;" >
+							<div class="progress-bar" role="progressbar"  
+								aria-valuemin="0" aria-valuemax="100"
+								aria-valuenow="0" style="width:0%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row" >
+				<div class="col-*-* trackHolder">
+					<div id="trackDiv" ></div>
+				</div>
+			</div>
+			
+			<div class="row" >
+				<div class="col-*-*">
+					<div class="who_made_it"> <b>©</b> 2017 - Stefan Videnović </div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<!-- sounds -->
+	<div id="audios">
+		<audio id="fart1" src="sounds/fart1.mp3" preload="auto"></audio>
+		<audio id="fart2" src="sounds/fart2.mp3" preload="auto"></audio>
+		<audio id="fart3" src="sounds/fart3.mp3" preload="auto"></audio>
+		<audio id="fart4" src="sounds/fart4.mp3" preload="auto"></audio>
+		<audio id="fart5" src="sounds/fart5.mp3" preload="auto"></audio>
+		
+		<audio id="Swallow_normal" src="sounds/Swallow_normal.mp3" preload="auto"></audio>
+		<audio id="Swallow_retarded_1" src="sounds/Swallow_retarded_1.mp3" preload="auto"></audio>
+		<audio id="Swallow_retarded_2" src="sounds/Swallow_retarded_2.mp3" preload="auto"></audio>
+		<audio id="Burp1" src="sounds/Belch.mp3" preload="auto"></audio>
+		<audio id="Burp2" src="sounds/Burp.mp3" preload="auto"></audio>
+		
+		<audio id="Victory" src="sounds/victory.mp3" preload="auto"></audio>
+		<audio id="LevelDone" src="sounds/level_done.mp3" preload="auto"></audio>
+		<audio id="GameOver" src="sounds/game_over.mp3" preload="auto"></audio>
+	</div>
+	
+	<!-- Modals -->
+	
+	<div id="Modal_victory" class="modal fade text-center" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+					<h4 class="modal-title">POBEDA !</h4>
+				</div>
+
+				<div class="modal-body"></div>
+
+				<div class="modal-footer">
+					<button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Start over</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="Modal_levelDone" class="modal fade text-center" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+					<h4 class="modal-title">NIVO <span>x</span> GOTOV</h4>
+				</div>
+
+				<div class="modal-body">
+					<p> Level Done ! </p>
+				</div>
+
+				<div class="modal-footer">
+					<button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Aj dalje</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="Modal_gameOver" class="modal fade text-center" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+					<h4 class="modal-title">E U KURAC :(</h4>
+				</div>
+
+				<div class="modal-body">
+					<p> Game Over ! </p>
+				</div>
+
+				<div class="modal-footer">
+					<button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Start over</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="Modal_help" class="modal fade text-center" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+					<h4 class="modal-title">E OVAKO...</h4>
+				</div>
+
+				<div class="modal-body">
+					<p> Help ! </p>
+				</div>
+
+				<div class="modal-footer">
+					<button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
